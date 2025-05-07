@@ -1,9 +1,10 @@
 import {Link} from "react-router";
+import {Toaster} from "react-hot-toast";
 
-const SignIn = () => {
+const SigninForm = ({ handleInput, handleSubmit }) => {
     return (
         <div className="bg-[url(../../../../../public/signup.jpg)] h-screen w-full bg-no-repeat flex items-center justify-center bg-cover bg-fixed">
-            <div className="h-[50%] shadow-2xl rounded-2xl flex w-[50%]">
+            <div className="h-[60%] shadow-2xl rounded-2xl flex w-[50%]">
                 <div className="w-full h-full flex items-center rounded-l-2xl  bg-[#33DAE9]  justify-center">
                     <div className=" w-[70%] flex flex-col gap-6 ">
                         <h1 className="text-4xl text-white text-start  font-bold font-serif ">
@@ -21,11 +22,11 @@ const SignIn = () => {
                         </h1>
                         <div className="flex mt-5 flex-col gap-2  ">
                             <label className='font-semibold' htmlFor="email">Email</label>
-                            <input className="p-2 border-b -mt-2 outline-none border-blue-900 " type="email" />
+                            <input onChange={handleInput} name="email" className="p-2 border-b -mt-2 outline-none border-blue-900 " type="email" />
                         </div>
                         <div className=" flex mt-5 flex-col gap-2  ">
                             <label  className='font-semibold' htmlFor="password">Password</label>
-                            <input className="p-2 -mt-2 border-b outline-none border-blue-900  " type="password" />
+                            <input onChange={handleInput} name="password" className="p-2 -mt-2 border-b outline-none border-blue-900  " type="password" />
                         </div>
                         <div className="flex gap-2 mt-2 font-semibold ">
                             <p>Don't have an account ? </p>
@@ -48,12 +49,12 @@ const SignIn = () => {
                                 <svg xmlns="http://www.w3.org/2000/svg"  width="24" height="24" color="currentColor" className="ionicon" viewBox="0 0 512 512">
                                     <path
                                         d="M480 257.35c0-123.7-100.3-224-224-224s-224 100.3-224 224c0 111.8 81.9 204.47 189 221.29V322.12h-56.89v-64.77H221V208c0-56.13 33.45-87.16 84.61-87.16 24.51 0 50.15 4.38 50.15 4.38v55.13H327.5c-27.81 0-36.51 17.26-36.51 35v42h62.12l-9.92 64.77H291v156.54c107.1-16.81 189-109.48 189-221.31z"
-                                        fill-rule="evenodd"/>
+                                        fillRule="evenodd"/>
                                 </svg>
                             </a>
                         </div>
                         <div className="flex justify-center">
-                            <button className=" bg-[#33DAE9] rounded-md text-blue-950 hover:cursor-pointer hover:shadow-2xl hover:bg-blue-300 w-full p-2 mt-5 font-semibold transition duration-300 ho " type="button">Sign Up</button>
+                            <button onClick={handleSubmit} className=" bg-[#33DAE9] rounded-md text-blue-950 hover:cursor-pointer hover:shadow-2xl hover:bg-blue-300 w-full p-2 mt-7 font-semibold transition duration-300 ho " type="button">Sign Up</button>
                         </div>
                     </form>
                 </div>
@@ -62,4 +63,4 @@ const SignIn = () => {
     );
 };
 
-export default SignIn;
+export default SigninForm;

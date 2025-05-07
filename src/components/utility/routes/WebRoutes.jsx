@@ -1,10 +1,13 @@
 import { Route, Routes } from "react-router"
 import App from "../../../App.jsx";
-import SignIn from "../../pages/authentication/signin/SignIn.js";
-import Signup from "../../pages/authentication/signup/Signup.js";
+import SignIn from "../../pages/authentication/signin/SignIn.jsx";
+import Signup from "../../pages/authentication/signup/Signup.jsx";
+import axios from "axios";
+import {Toaster} from "react-hot-toast";
 
+axios.defaults.baseURL = "http://localhost:5000";
 const WebRoutes = () => {
-    return ( 
+    return (
         <Routes>
             <Route path="/" element={<App />} />
             <Route path="/authentication/signin" element={<SignIn />} />

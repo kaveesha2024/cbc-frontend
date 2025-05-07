@@ -4,11 +4,15 @@ import './index.css'
 import App from './App.jsx'
 import { BrowserRouter } from 'react-router'
 import WebRoutes from './components/utility/routes/WebRoutes.jsx'
+import {Toaster} from "react-hot-toast";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
-      <WebRoutes />
-    </BrowserRouter>
+    <div>
+        <Toaster />
+        <BrowserRouter>
+            <WebRoutes />
+        </BrowserRouter>
+    </div>
   </StrictMode>,
 )
