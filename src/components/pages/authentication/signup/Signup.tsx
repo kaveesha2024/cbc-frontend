@@ -1,37 +1,36 @@
 import {Link} from "react-router";
+import SignInput from './re-usable/SignInput.jsx';
 
-const SignIn = () => {
+const Signup = () => {
     return (
         <div className="bg-[url(../../../../../public/signup.jpg)] h-screen w-full bg-no-repeat flex items-center justify-center bg-cover bg-fixed">
-            <div className="h-[50%] shadow-2xl rounded-2xl flex w-[50%]">
+            <div className="h-[70%] shadow-2xl rounded-2xl flex w-[50%]">
                 <div className="w-full h-full flex items-center rounded-l-2xl  bg-[#33DAE9]  justify-center">
                     <div className=" w-[70%] flex flex-col gap-6 ">
                         <h1 className="text-4xl text-white text-start  font-bold font-serif ">
-                            Welcome Back to Crystal Beauty Clear.
+                            Join the Crystal Beauty Clear Family.
                         </h1>
                         <p className="text-justify font-semibold font-[Open Sans] text-[#3a3838]">
-                            Log in to explore a world of radiant beauty. Shop your favorite skincare, makeup, and wellness products with ease. Your journey to clearer, glowing skin starts here.
+                            Create your account to unlock exclusive beauty deals, personalized skincare tips, and the latest cosmetic trends. Sign up today and start your journey to a more confident, glowing you.
                         </p>
                     </div>
                 </div>
-                <div className="w-full h-full flex items-center backdrop-blur-3xl  justify-center  rounded-r-2xl">
+                <div className="w-full h-full flex items-center backdrop-blur-sm  justify-center  rounded-r-2xl">
                     <form className=" w-[75%] ">
                         <h1 className="text-4xl text-center bg-gradient-to-bl from-blue-700 to-[#33DAE9] bg-clip-text text-transparent font-bold font-serif ">
-                            Login
+                            Sign UP
                         </h1>
-                        <div className="flex mt-5 flex-col gap-2  ">
-                            <label className='font-semibold' htmlFor="email">Email</label>
-                            <input className="p-2 border-b -mt-2 outline-none border-blue-900 " type="email" />
-                        </div>
-                        <div className=" flex mt-5 flex-col gap-2  ">
-                            <label  className='font-semibold' htmlFor="password">Password</label>
-                            <input className="p-2 -mt-2 border-b outline-none border-blue-900  " type="password" />
-                        </div>
+
+                        <SignInput type="text" label="First Name" name="firstName"/>
+                        <SignInput type="text" label="Last Name" name="lastName"/>
+                        <SignInput type="email" label="Email Address" name="email"/>
+                        <SignInput type="password" label="Password" name="password"/>
+
                         <div className="flex gap-2 mt-2 font-semibold ">
-                            <p>Don't have an account ? </p>
-                            <Link to='/authentication/signup' className=" transition duration-200 underline hover:text-[#33DAE9]">Sign Up</Link>
+                            <p>Already have an account ? </p>
+                            <Link to='/authentication/signin' className=" transition duration-200 underline hover:text-[#33DAE9]">Sign In</Link>
                         </div>
-                        <div  className="mt-3 flex justify-center gap-6 ">
+                        <div  className=" mt-3 flex justify-center gap-6 ">
                             <a href="www.google.com" target="_blank">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="ionicon" width="24" height="24" color="currentColor" viewBox="0 0 512 512">
                                     <path
@@ -62,4 +61,4 @@ const SignIn = () => {
     );
 };
 
-export default SignIn;
+export default Signup;
