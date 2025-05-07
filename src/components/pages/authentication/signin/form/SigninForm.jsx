@@ -7,7 +7,7 @@ import GitiHubIcon from "../../../../icons/GitiHubIcon.jsx";
 const SigninForm = ({ handleInput, handleSubmit }) => {
   return (
     <div className="bg-[url(../../../../../public/signup.jpg)] h-screen w-full bg-no-repeat flex items-center justify-center bg-cover bg-fixed">
-      <div className="h-[60%] shadow-2xl rounded-2xl flex w-[50%]">
+      <div className="h-[70%] shadow-2xl rounded-2xl flex w-[50%]">
         <div className="w-full h-full flex items-center rounded-l-2xl  bg-[#33DAE9]  justify-center">
           <div className=" w-[70%] flex flex-col gap-6 ">
             <h1 className="text-4xl text-white text-start  font-bold font-serif ">

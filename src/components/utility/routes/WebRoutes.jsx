@@ -3,7 +3,6 @@ import App from "../../../App.jsx";
 import SignIn from "../../pages/authentication/signin/SignIn.jsx";
 import Signup from "../../pages/authentication/signup/Signup.jsx";
 import axios from "axios";
-import {Toaster} from "react-hot-toast";
 
 axios.defaults.baseURL = "http://localhost:5000";
 const WebRoutes = () => {
