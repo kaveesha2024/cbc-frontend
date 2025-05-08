@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router";
+import { generateSalt } from "../../../utility/commonFunctionalities/CommonFunctions.js";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -21,15 +22,6 @@ const Signup = () => {
       salt,
     });
   }, [])
-  const generateSalt = () => {
-    const characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*_+";
-    let salt = "";
-    const array = new Uint8Array(100);
-    crypto.getRandomValues(array);
-    array.forEach((byte) => (salt += characters[byte % characters.length]));
-    return salt;
-  };
   const handleInputChange = event => {
     const { name, value } = event.target;
     setSignupInputDetails({
