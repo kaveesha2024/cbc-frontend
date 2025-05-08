@@ -52,7 +52,8 @@ const TableProducts = ({ products, getReviewByIndex }) => {
               <td className="px-6 py-4">{product.quantity}</td>
               <td className="px-6 py-4">{product.alterNames.join(', ')}</td>
               <td className="px-6 py-4">{product.description.join(', ')}</td>
-              <td className="px-6 py-4" onClick={() => {getReviewByIndex(index, product.reviews)}}>{product.reviews ? <button className='bg-blue-300 p-3 rounded-sm hover:cursor-pointer'>view</button> : <button disabled={true} className='bg-blue-300 p-3 rounded-sm hover:cursor-pointer'>view</button>}</td>
+              {/*<td className="px-6 py-4"><button type='button' disabled className='bg-blue-300 hover:cursor-not-allowed p-3 rounded-sm '>view</button></td>*/}
+              <td className="px-6 py-4">{product.reviews.length > 0 ? <button onClick={() => {getReviewByIndex(index, product.reviews)}} className='bg-blue-300 p-3 rounded-sm hover:cursor-pointer'>view</button> : <button disabled type='button' className='bg-blue-300 p-3 rounded-sm hover:cursor-not-allowed'>Empty</button>}</td>
             </tr>
           )) : (
             <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">

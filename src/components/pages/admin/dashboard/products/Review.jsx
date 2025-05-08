@@ -1,4 +1,4 @@
-const Review = ({  setReviewId, review  }) => {
+const Review = ({  setReviewId, review, setReview  }) => {
   return ( // review = object -> comment: string, img: array
     <div className=' fixed top-0 left-0 backdrop-blur-sm w-full h-screen flex justify-center items-center'>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -43,7 +43,10 @@ const Review = ({  setReviewId, review  }) => {
           </tbody>
         </table>
       </div>
-      <button onClick={() => {setReviewId(0)}} className='bg-blue-400 fixed bottom-3 right-3 hover:bg-blue-900 transition duration-300 hover:text-blue-200 py-2 px-3 rounded-sm shadow-2xl hover:cursor-pointer '>Back</button>
+      <button onClick={() => {
+        setReviewId(0)
+        setReview([]);
+      }} className='bg-blue-400 fixed bottom-3 right-3 hover:bg-blue-900 transition duration-300 hover:text-blue-200 py-2 px-3 rounded-sm shadow-2xl hover:cursor-pointer '>Back</button>
     </div>
   );
 };

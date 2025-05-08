@@ -1,12 +1,17 @@
 import DashboardNavigation from "./navigation/DashboardNavigation.jsx";
-import { Route, Routes } from "react-router";
+import { Route, Routes, useNavigate } from "react-router";
 import Products from "./products/Products.jsx";
 import Users from "./users/Users.jsx";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate("/");
+  };
   return (
     <div>
-      <DashboardNavigation />
+      <DashboardNavigation handleLogout={handleLogout} />
       <Routes>
         <Route path="/products" element={<Products />} />
         <Route path="/users" element={<Users />} />

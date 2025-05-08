@@ -15,7 +15,11 @@ const Products = () => {
     let productToast;
     try{
        productToast = toast.loading('Loading...');
-      const response = await axios.get('/api/products/');
+      const response = await axios.get('/api/products/', {
+        headers: {
+          "Authorization": `Bearer ${localStorage.getItem('token')}`
+        }
+      });
       setProducts(response.data)
       toast.dismiss(productToast)
     }catch (err){
@@ -24,18 +28,18 @@ const Products = () => {
     }
   };
   const getReviewByIndex = (index, review) => {
-    if(index === 0){
+    if(index <= 0){
       setReviewId(1)
+      setReview(review);
       return;
     }
     setReviewId(index);
     setReview(review);
   };
-  console.log(products);
   return (
     <div className="p-20 h-screen w-full">
       <TableProducts products={products} getReviewByIndex={getReviewByIndex} />
-      {reviewId > 0 ? <Review setReviewId={setReviewId} review={review} /> : null}
+      {reviewId > 0 ? <Review setReviewId={setReviewId} setReview={setReview} review={review} /> : null}
     </div>
   );
 };
