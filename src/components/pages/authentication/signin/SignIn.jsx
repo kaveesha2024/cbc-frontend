@@ -31,6 +31,15 @@ const SignIn = () => {
         return;
       }
       localStorage.setItem("token", response.data.token);
+      localStorage.setItem("firstName", response.data.user.firstName);
+      localStorage.setItem("email", response.data.user.email);
+      localStorage.setItem("isAdmin", response.data.user.isAdmin);
+      localStorage.setItem("isBlocked", response.data.user.isBlocked);
+      localStorage.setItem("profileImage", response.data.user.profileImage);
+      if (response.data.user.isAdmin){
+        navigate("/dashboard");
+        return;
+      }
       navigate("/");
     } catch (error) {
       toast.error(error.response.data.message);
