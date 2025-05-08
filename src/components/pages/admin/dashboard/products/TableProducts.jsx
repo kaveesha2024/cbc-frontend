@@ -1,6 +1,8 @@
 import AddIcon from "../../../../icons/AddIcon.jsx";
+import { useNavigate } from "react-router";
 
 const TableProducts = ({ products, getReviewByIndex }) => {
+  const navigation = useNavigate();
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -87,7 +89,7 @@ const TableProducts = ({ products, getReviewByIndex }) => {
           )}
         </tbody>
       </table>
-      <button className="bg-green-500 fixed bottom-10 right-5 flex items-center justify-center shadow-2xl hover:cursor-pointer transition duration-300  focus:bg-red-500 w-11 h-11 rounded-full">{<AddIcon />}</button>
+      <button onClick={() => {navigation('/dashboard/products/add')}} className="bg-green-500 fixed bottom-10 right-5 flex items-center justify-center shadow-2xl hover:cursor-pointer transition duration-300  focus:bg-red-500 w-11 h-11 rounded-full">{<AddIcon />}</button>
     </div>
   );
 };
