@@ -1,3 +1,5 @@
+import AddIcon from "../../../../icons/AddIcon.jsx";
+
 const TableProducts = ({ products, getReviewByIndex }) => {
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -29,6 +31,9 @@ const TableProducts = ({ products, getReviewByIndex }) => {
               Quantity
             </th>
             <th scope="col" className="px-6 py-3">
+              Images
+            </th>
+            <th scope="col" className="px-6 py-3">
               Alternative Names
             </th>
             <th scope="col" className="px-6 py-3">
@@ -36,6 +41,9 @@ const TableProducts = ({ products, getReviewByIndex }) => {
             </th>
             <th scope="col" className="px-6 py-3">
               Reviews
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Action
             </th>
           </tr>
         </thead>
@@ -46,14 +54,20 @@ const TableProducts = ({ products, getReviewByIndex }) => {
               <td className="px-6 py-4">{product.name}</td>
               <td className="px-6 py-4">{product.category}</td>
               <td className="px-6 py-4">{product.brand}</td>
-              <td className="px-6 py-4">{product.isAvailable ? <span>in stock</span> : <span>out of stock</span>}</td>
+              <td className="px-6 py-4">{product.isAvailable ? <span className="font-semibold text-green-500">in stock</span> : <span className="font-semibold text-red-500">out of stock</span>}</td>
               <td className="px-6 py-4">{product.labelledPrice}</td>
               <td className="px-6 py-4">{product.price}</td>
               <td className="px-6 py-4">{product.quantity}</td>
+              <td className="px-6 py-4"><div className=" w-15 h-15"><img src={product.images[0]} alt="img" /></div></td>
               <td className="px-6 py-4">{product.alterNames.join(', ')}</td>
               <td className="px-6 py-4">{product.description.join(', ')}</td>
-              {/*<td className="px-6 py-4"><button type='button' disabled className='bg-blue-300 hover:cursor-not-allowed p-3 rounded-sm '>view</button></td>*/}
               <td className="px-6 py-4">{product.reviews.length > 0 ? <button onClick={() => {getReviewByIndex(index, product.reviews)}} className='bg-blue-300 p-3 rounded-sm hover:cursor-pointer'>view</button> : <button disabled type='button' className='bg-blue-300 p-3 rounded-sm hover:cursor-not-allowed'>Empty</button>}</td>
+              <td className="px-6 py-4">
+                <div className="flex flex-col gap-2">
+                  <button className="bg-blue-500 p-2 ml-2 rounded-sm text-white font-semibold hover:cursor-pointer">Update</button>
+                  <button className="bg-red-500 p-2 ml-2 rounded-sm text-white font-semibold hover:cursor-pointer">Delete</button>
+                </div>
+              </td>
             </tr>
           )) : (
             <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
@@ -73,6 +87,7 @@ const TableProducts = ({ products, getReviewByIndex }) => {
           )}
         </tbody>
       </table>
+      <button className="bg-green-500 fixed bottom-10 right-5 flex items-center justify-center shadow-2xl hover:cursor-pointer transition duration-300  focus:bg-red-500 w-11 h-11 rounded-full">{<AddIcon />}</button>
     </div>
   );
 };

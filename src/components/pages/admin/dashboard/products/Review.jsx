@@ -1,5 +1,6 @@
+
 const Review = ({  setReviewId, review, setReview  }) => {
-  return ( // review = object -> comment: string, img: array
+  return (
     <div className=' fixed top-0 left-0 backdrop-blur-sm w-full h-screen flex justify-center items-center'>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -21,7 +22,7 @@ const Review = ({  setReviewId, review, setReview  }) => {
                   { data.comments }
                 </td>
                 <td className="px-6 py-4">
-                  { data.images.length > 0 ?  data.images[0] : <span>no images</span>}
+                  { data.images.length > 0 ? <div><a href={data.images[0]} target='_blank'><img className="w-15 h-15" src={data.images[0]} alt="img" /></a></div> : <span>no images</span>}
                 </td>
                 <td className="px-6 py-4">
                   <button className='bg-red-500 p-2 text-white rounded-sm shadow-2xl hover:cursor-pointer'>Delete</button>
