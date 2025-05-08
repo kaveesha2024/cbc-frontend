@@ -12,12 +12,7 @@ const WebRoutes = () => {
       <Route path="/" element={<App />} />
       <Route path="/authentication/signin" element={<SignIn />} />
       <Route path="/authentication/signup" element={<Signup />} />
-      <Route
-        path="/dashboard"
-        element={
-          localStorage.getItem("token") ? <Dashboard /> : <Navigate to="/" />
-        }
-      />
+      <Route path="/dashboard" element={localStorage.getItem("token") ? <Dashboard /> : <Navigate to="/" /> } />
     </Routes>
   );
 };

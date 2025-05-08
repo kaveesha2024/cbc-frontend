@@ -43,8 +43,18 @@ const Signup = () => {
           const signInResponse = await axios.post('/api/users/signin', loginDetails);
           if (signInResponse.data.token) {
             localStorage.setItem("token", signInResponse.data.token);
-            navigate('/');
+            localStorage.setItem("firstName", signInResponse.data.user.firstName);
+            localStorage.setItem("email", signInResponse.data.user.email);
+            localStorage.setItem("isAdmin", signInResponse.data.user.isAdmin);
+            localStorage.setItem("isBlocked", signInResponse.data.user.isBlocked);
+            localStorage.setItem("profileImage", signInResponse.data.user.profileImage);
+            if (signInResponse.data.user.isAdmin){
+              toast.dismiss(signUpToast);
+              navigate("/dashboard");
+              return;
+            }
             toast.dismiss(signUpToast);
+            navigate("/");
             return;
           }
           toast.dismiss(signUpToast);
