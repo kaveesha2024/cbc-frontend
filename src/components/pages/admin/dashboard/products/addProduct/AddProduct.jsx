@@ -37,6 +37,19 @@ const AddProduct = () => {
     });
   };
   const handleSubmit = async (images) => {
+    if (
+      images.length === 0 ||
+      inputData.name === "" ||
+      inputData.brand === "" ||
+      inputData.descriptionStatement === "" ||
+      inputData.category === "" ||
+      inputData.labelledPrice === "" ||
+      inputData.price === "" ||
+      inputData.quantity === ""
+    ) {
+      toast.error("Please Fill All The Fields");
+      return;
+    }
     const handleSubmitToast = toast.loading("Loading...");
     inputData.description = inputData.descriptionStatement.split(", ");
     const discount = inputData.labelledPrice - inputData.price;
