@@ -22,12 +22,12 @@ const AddProduct = () => {
     name: "",
     brand: "",
     descriptionStatement: "",
-    description: '',
+    description: "",
     category: "",
-    labelledPrice: '',
-    price: '',
-    quantity: '',
-    images: '',
+    labelledPrice: "",
+    price: "",
+    quantity: "",
+    images: "",
   });
   const handleInput = async (event) => {
     const { name, value } = event.target;
@@ -42,9 +42,9 @@ const AddProduct = () => {
     const discount = inputData.labelledPrice - inputData.price;
     const promiseArray = [];
     for (let i = 0; i < images.length; i++) {
-      promiseArray[i] =  imageUpload(images[i]);
+      promiseArray[i] = imageUpload(images[i]);
     }
-    try{
+    try {
       const publicUrls = await Promise.all(promiseArray);
 
       const req = {
@@ -57,23 +57,22 @@ const AddProduct = () => {
         quantity: inputData.quantity,
         discounts: discount,
         images: publicUrls,
-      }
+      };
       try {
         const response = await axios.post("/api/products/add", req, {
           headers: {
-            "Authorization": `Bearer ${localStorage.getItem('token')}`
-          }
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
         });
         if (response.data.status === 200) {
           toast.dismiss(handleSubmitToast);
-          navigate('/dashboard/products');
+          navigate("/dashboard/products");
         }
-      }catch (err){
+      } catch (err) {
         toast.dismiss(handleSubmitToast);
         toast.error(err);
       }
-
-    }catch(err) {
+    } catch (err) {
       toast.dismiss(handleSubmitToast);
       toast.error(err);
       console.log(err);
@@ -81,7 +80,11 @@ const AddProduct = () => {
   };
   return (
     <div>
-      <AddProductTable handleSubmit={handleSubmit} handleInput={handleInput} errState={errState} />
+      <AddProductTable
+        handleSubmit={handleSubmit}
+        handleInput={handleInput}
+        errState={errState}
+      />
     </div>
   );
 };
