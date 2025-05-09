@@ -1,4 +1,4 @@
-export const AddProductInputField = ({ name, label, placeholder, type, handleInput }) => {
+export const AddProductInputField = ({ name, label, placeholder, type, handleInput, errState }) => {
   return (
     <div className="mb-5">
       <label
@@ -7,6 +7,7 @@ export const AddProductInputField = ({ name, label, placeholder, type, handleInp
       >
         {label}
       </label>
+      <p className="text-red-500 font-semibold">{errState}</p>
       <input
         type={type}
         id={name}
@@ -20,7 +21,7 @@ export const AddProductInputField = ({ name, label, placeholder, type, handleInp
   );
 };
 
-export const AddProductTextAre = ({ name, label, placeholder, handleInput }) => {
+export const AddProductTextAre = ({ name, label, placeholder, handleInput, errState }) => {
   return (
     <div className="mb-5">
       <label
@@ -29,6 +30,7 @@ export const AddProductTextAre = ({ name, label, placeholder, handleInput }) => 
       >
         {label}
       </label>
+      <p className="text-red-500 font-semibold">{errState}</p>
       <textarea
         id={name}
         name={name}
@@ -40,7 +42,7 @@ export const AddProductTextAre = ({ name, label, placeholder, handleInput }) => 
     </div>
   );
 };
-export const AddProductFile = ({ name, label, handleInputFile }) => {
+export const AddProductFile = ({ name, label, handleInputFile,errState }) => {
   return (
     <div className="mb-5">
       <label
@@ -49,6 +51,7 @@ export const AddProductFile = ({ name, label, handleInputFile }) => {
       >
         {label}
       </label>
+      <p className="text-red-500 font-semibold">{errState}</p>
       <input
         id={name}
         name={name}
