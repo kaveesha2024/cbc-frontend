@@ -66,7 +66,7 @@ const TableProducts = ({ products, getReviewByIndex }) => {
               <td className="px-6 py-4">{product.reviews.length > 0 ? <button onClick={() => {getReviewByIndex(index, product.reviews)}} className='bg-blue-300 p-3 rounded-sm hover:cursor-pointer'>view</button> : <button disabled type='button' className='bg-blue-300 p-3 rounded-sm hover:cursor-not-allowed'>Empty</button>}</td>
               <td className="px-6 py-4">
                 <div className="flex flex-col gap-2">
-                  <button className="bg-blue-500 p-2 ml-2 rounded-sm text-white font-semibold hover:cursor-pointer">Update</button>
+                  <button onClick={() => {navigation('update', {state: product})}} className="bg-blue-500 p-2 ml-2 rounded-sm text-white font-semibold hover:cursor-pointer">Update</button>
                   <button className="bg-red-500 p-2 ml-2 rounded-sm text-white font-semibold hover:cursor-pointer">Delete</button>
                 </div>
               </td>

@@ -1,4 +1,4 @@
-import AddProductTable from "./AddProductTable.jsx";
+import ProductForm from "../productForm/ProductForm.jsx";
 import { useState } from "react";
 import { imageUpload } from "../../../../../utility/promise/imageUploadPromise.js";
 import axios from "axios";
@@ -93,7 +93,7 @@ const AddProduct = () => {
   };
   return (
     <div>
-      <AddProductTable
+      <ProductForm
         handleSubmit={handleSubmit}
         handleInput={handleInput}
         errState={errState}

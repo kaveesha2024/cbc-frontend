@@ -5,7 +5,7 @@ import {
 } from "../../../../../utility/re-usable/AddProductInputField.jsx";
 import {useState} from "react";
 
-const AddProductTable = ({ handleInput, handleSubmit, errState }) => {
+const ProductForm = ({ handleInput, handleSubmit, errState }) => {
   const [files, setFiles] = useState([]);
   const handleInputFile = event => {
     setFiles(event.target.files);
@@ -82,4 +82,4 @@ const AddProductTable = ({ handleInput, handleSubmit, errState }) => {
   );
 };
 
-export default AddProductTable;
+export default ProductForm;

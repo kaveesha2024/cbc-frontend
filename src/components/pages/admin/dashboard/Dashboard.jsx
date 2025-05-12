@@ -3,6 +3,7 @@ import { Route, Routes, useNavigate } from "react-router";
 import Products from "./products/Products.jsx";
 import Users from "./users/Users.jsx";
 import AddProduct from "./products/addProduct/AddProduct.jsx";
+import UpdateProduct from "./products/updateProduct/UpdateProduct.jsx";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ const Dashboard = () => {
       <Routes>
         <Route path="/products" element={<Products />} />
         <Route path="/products/add" element={<AddProduct  />} />
+        <Route path="/products/update" element={< UpdateProduct />} />
         <Route path="/users" element={<Users />} />
       </Routes>
     </div>
