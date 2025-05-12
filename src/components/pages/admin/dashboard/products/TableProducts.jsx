@@ -1,7 +1,8 @@
 import AddIcon from "../../../../icons/AddIcon.jsx";
 import { useNavigate } from "react-router";
+import {useEffect, useState} from "react";
 
-const TableProducts = ({ products, getReviewByIndex }) => {
+const TableProducts = ({ products, getReviewByIndex, handleDeleteProduct }) => {
   const navigation = useNavigate();
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -67,7 +68,7 @@ const TableProducts = ({ products, getReviewByIndex }) => {
               <td className="px-6 py-4">
                 <div className="flex flex-col gap-2">
                   <button onClick={() => {navigation('update', {state: product})}} className="bg-blue-500 p-2 ml-2 rounded-sm text-white font-semibold hover:cursor-pointer">Update</button>
-                  <button className="bg-red-500 p-2 ml-2 rounded-sm text-white font-semibold hover:cursor-pointer">Delete</button>
+                  <button onClick={() => {handleDeleteProduct(product.productId)}} className="bg-red-500 p-2 ml-2 rounded-sm text-white font-semibold hover:cursor-pointer">Delete</button>
                 </div>
               </td>
             </tr>
