@@ -18,8 +18,8 @@ const UpdateProduct = () => {
         price: previousDetails.price,
         quantity: previousDetails.quantity,
         images: previousDetails.images,
+        isAvailable: previousDetails.isAvailable,
     })
-
     const handleInput = event => {
         const {name, value} = event.target;
         setInputDetails({
@@ -29,6 +29,8 @@ const UpdateProduct = () => {
     }
     const handleSubmit = async (files) => {
         const updateToast = toast.loading("Loading...");
+        inputDetails.isAvailable = inputDetails.isAvailable === "true";
+
         let PublicUrls = previousDetails.images;
         if (files.length > 0) {
             const promiseArray = [];
@@ -53,6 +55,7 @@ const UpdateProduct = () => {
             quantity: inputDetails.quantity,
             discounts: new_discount,
             images: PublicUrls,
+            isAvailable: inputDetails.isAvailable,
         }
         try {
             const response = await axios.put('/api/products/update', req,{ headers: {

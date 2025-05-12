@@ -31,6 +31,12 @@ const UpdateForm = ({ previousDetails, handleInput, handleSubmit }) => {
                     value={previousDetails.brand}
                     placeholder="Enter Brand Name"
                 />
+                <div className="mb-5">
+                    <select onChange={handleInput} name="isAvailable" id="isAvailable">
+                        <option value="true" >In Stock</option>
+                        <option value="false">Out of Stock</option>
+                    </select >
+                </div>
                 <AddProductTextAre
                     label="Description"
                     name="descriptionStatement"

@@ -75,7 +75,15 @@ const Products = () => {
   }
   return (
     <div className="p-20 h-screen w-full">
-      <TableProducts products={products} getReviewByIndex={getReviewByIndex} handleDeleteProduct={handleDeleteProduct} />
+      {
+        isLoading ? (
+            <div className=" w-full flex items-center justify-center h-full">
+              <div className="w-[40px] border-[4px] animate-spin border-l-blue-600 border-black rounded-full h-[40px]"></div>
+            </div>
+        ) : (
+            <TableProducts products={products} getReviewByIndex={getReviewByIndex} handleDeleteProduct={handleDeleteProduct} />
+        )
+      }
       {reviewId > 0 ? <Review setReviewId={setReviewId} setReview={setReview} review={review} /> : null}
     </div>
   );
