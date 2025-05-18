@@ -1,22 +1,28 @@
-const HomeProductContainer = () => {
+import { useNavigate } from "react-router";
+const HomeProductContainer = ({ products }) => {
+    const navigate = useNavigate();
     return (
-        <div className="w-full h-screen flex flex-wrap justify-center items-center">
-            <div className="w-[320px] h-[500px] shadow hover:shadow-2xl  transition duration-200 cursor-pointer p-2 rounded-lg">
-                <div className="rounded-lg w-full h-[50%]">
-                    <img src={'https://flowbite.com/docs/images/products/apple-watch.png'} alt="" />
-                </div>
-                <div className="flex flex-col gap-3">
-                    <p className="font-bold text-2xl">Fair and Lovely</p>
-                    <p className="text-start font-thin line-clamp-3  h-[70px]">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates consectetur dignissimos eaque minima saepe commodi deserunt, atque ullam nisi quasi vitae totam ipsum ipsa nam eum doloribus, quibusdam quo magnam!</p>
-                    <div className="flex flex-col ">
-                        <span className="text-accent text-xl font-bold">LKR 900.00</span>
-                        <span className="line-through font-thin">LKR 990.00</span>
+        <div className="w-full my-20 flex flex-wrap justify-center gap-10 items-center">
+            {
+                products.length > 0 && products.map((product, index) => (
+                    <div key={index} onClick={() => { navigate(`view/product?id=${product.productId}`) }} className="w-[320px] h-[550px] shadow hover:shadow-2xl  transition duration-200 cursor-pointer p-2 rounded-lg">
+                        <div className="rounded-lg w-full mb-5 h-[50%]">
+                            <img className="max-h-full min-h-full max-w-full min-w-full" src={product.images[0]} alt="image" />
+                        </div>
+                        <div className="flex flex-col gap-3">
+                            <p className="font-bold text-2xl">{product.name}</p>
+                            <p className="text-start font-thin line-clamp-3  h-[70px]">{product.description[0]}</p>
+                            <div className="flex flex-col ">
+                                <span className="text-accent text-xl font-bold">LKR {product.price}.00</span>
+                                <span className="line-through font-thin">LKR {product.labelledPrice}.00</span>
+                            </div>
+                            <div className="flex justify-end ">
+                                <button className="bg-accent p-2 text-primary rounded-sm cursor-pointer">Add to cart</button>
+                            </div>
+                        </div>
                     </div>
-                    <div className="flex justify-end ">
-                        <button className="bg-accent p-2 text-primary rounded-sm cursor-pointer">Add to cart</button>
-                    </div>
-                </div>
-            </div>
+                ))
+            }
         </div>
     );
 };

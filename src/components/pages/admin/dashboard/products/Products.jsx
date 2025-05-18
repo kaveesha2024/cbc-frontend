@@ -26,7 +26,7 @@ const Products = () => {
           "Authorization": `Bearer ${localStorage.getItem('token')}`
         }
       });
-      setProducts(response.data)
+      setProducts(response.data.message)
       toast.dismiss(productToast)
     }catch (err){
       toast.dismiss(productToast)
