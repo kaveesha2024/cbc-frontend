@@ -8,7 +8,7 @@ import { FaUserAlt } from "react-icons/fa";
 const Navbar = () => {
   return (
     <nav className="bg-primary shadow-lg rounded-b-2xl">
-      <div className="max-w-7xl mx-auto px-1 h-[120px] flex items-center justify-between">
+      <div className=" mx-auto px-20 h-[120px] flex items-center justify-between">
         <Link
           to="/"
           className="text-accent text-3xl font-extrabold tracking-tight flex justify-center items-center hover:text-pink-600 transition-colors duration-200"
