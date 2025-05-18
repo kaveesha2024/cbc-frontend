@@ -68,7 +68,7 @@ const Navbar = () => {
                 to="/authentication/signin"
                 className="font-semibold hover:underline cursor-pointer"
               >
-                <span className="flex justify-center items-center gap-2">Sign In or Create Acount <span><FaUserAlt /></span></span>
+                <span className="flex justify-center items-center  gap-2">Sign In or Create Acount <span><FaUserAlt /></span></span>
               </Link>
             )}
           </div>
