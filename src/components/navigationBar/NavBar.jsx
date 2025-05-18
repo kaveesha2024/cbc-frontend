@@ -18,7 +18,6 @@ const Navbar = () => {
           </span>
         </Link>
         <div className="flex items-end transition flex-col duration-300 gap-5">
-          {/* contact number */}
           <div className="flex items-center gap-4">
             <span className="text-sm font-semibold">Customer Service 074-085 9676</span>
             <input
@@ -26,13 +25,12 @@ const Navbar = () => {
               className="bg-white text-secondary outline-none py-1 px-2 rounded-sm border-2 border-accent"
               placeholder="search"
             />
-            <span className="cursor-pointer hover:scale-110 transition duration-200"><AiOutlineSearch /></span>
+            <span className="cursor-pointer  transition duration-200"><AiOutlineSearch /></span>
           </div>
-          {/* cart, sign, wishlist */}
           <div className="flex items-center gap-8">
             <Link
               to="/cart"
-              className="flex  items-center gap-1 p-2 hover:scale-110 transition duration-300  font-semibold cursor-pointer"
+              className="flex items-center hover:text-accent gap-1 p-2 transition font-semibold cursor-pointer"
             >
               <span className="  bg-accent text-primary rounded-full w-5 h-5 flex items-center justify-center !text-[10px]  p-2">
                 1
@@ -40,7 +38,7 @@ const Navbar = () => {
               <span>Cart</span>
               <HiShoppingCart className="text-xl " />
             </Link>
-            <Link className="flex gap-1 items-center hover:scale-110 transition duration-300  font-semibold cursor-pointer p-2">
+            <Link className="flex gap-1 items-center hover:text-accent transition  font-semibold cursor-pointer p-2">
               <span className="  bg-accent text-primary rounded-full w-5 h-5 flex items-center justify-center !text-[10px]  p-2">1</span>
               Whish List
               <span>
@@ -51,10 +49,10 @@ const Navbar = () => {
               <div>
                 {localStorage.getItem("isAdmin") === "true" ? (
                   <Link
-                    className="flex items-center gap-1 hover:scale-110 transition duration-300  font-semibold cursor-pointer p-2"
+                    className="flex items-center gap-1  transition hover:text-accent font-semibold cursor-pointer p-2"
                     to="/dashboard"
                   >
-                    Dashboard{" "}
+                    Dashboard
                     <span>
                       <MdSpaceDashboard className="text-xl" />
                     </span>
