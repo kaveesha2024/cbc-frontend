@@ -13,7 +13,7 @@ axios.interceptors.request.use((config) => {
       config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
-  }, function (error) {
+  },  (error) => {
     return Promise.reject(error);
   });
 const WebRoutes = () => {
