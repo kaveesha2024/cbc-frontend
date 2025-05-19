@@ -1,11 +1,9 @@
-
 import { useEffect, useState } from "react";
 import Hero from "./components/hero/Hero";
 import HomeProductContainer from "./components/homeProductContainer/HomeProductContainer";
 import NavBar from "./components/navigationBar/NavBar.JSX";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { SunspotLoader } from "react-awesome-loaders";
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -15,7 +13,7 @@ const App = () => {
   }, []);
   const getProducts = async () => {
     try {
-      const response = await axios.get('api/products');
+      const response = await axios.get("api/products");
       setPromise("fulfilled");
       setProducts(response.data.message);
     } catch (error) {
@@ -26,25 +24,23 @@ const App = () => {
 
   return (
     <div>
-      {
-        promise === "pending" ? (
-          <div className=" w-full h-[100vh] flex items-center justify-center flex-col">
-            <SunspotLoader
-              gradientColors={["#F6339A", "#000"]}
-              shadowColor={"#3730A3"}
-              desktopSize={"100px"}
-              mobileSize={"100px"}
-            />
-          </div>
-        ) : (
-          <div>
-            <NavBar />
-            <Hero />
-            <HomeProductContainer products={products} />
-          </div>
-        )
-      }
+      {promise === "pending" ? (
+        <div className=" w-full h-[100vh] flex items-center justify-center flex-col">
+          {/*<SunspotLoader*/}
+          {/*  gradientColors={["#F6339A", "#000"]}*/}
+          {/*  shadowColor={"#3730A3"}*/}
+          {/*  desktopSize={"100px"}*/}
+          {/*  mobileSize={"100px"}*/}
+          {/*/>*/}
+        </div>
+      ) : (
+        <div>
+          <NavBar />
+          <Hero />
+          <HomeProductContainer products={products} />
+        </div>
+      )}
     </div>
-  )
+  );
 };
 export default App;
