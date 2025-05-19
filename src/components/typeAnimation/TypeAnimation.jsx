@@ -8,9 +8,7 @@ const HeroTypeAnimation = () => {
         '',1000,
         'Explore our wide range of products and enjoy shopping!', 1000,
         '',1000,
-        () => {
-          console.log('Sequence completed');
-        },
+        () => {},
       ]}
       wrapper="span"
       speed={50}
