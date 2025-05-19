@@ -36,8 +36,13 @@ const HomeProductContainer = ({ products }) => {
                                 </span>
                             </div>
                             <div className="flex justify-end items-center mt-auto">
-                                <button className="bg-accent p-2 text-primary rounded-sm cursor-pointer text-xs sm:text-base">
-                                    Add to cart
+                                <button
+                                    onClick={() => {
+                                        navigate(`view/product/${product.productId}`);
+                                    }}
+                                    className="bg-accent p-2 text-primary rounded-sm cursor-pointer text-xs sm:text-base"
+                                >
+                                    View Product
                                 </button>
                             </div>
                         </div>
