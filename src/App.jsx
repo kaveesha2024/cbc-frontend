@@ -4,6 +4,7 @@ import HomeProductContainer from './components/homeProductContainer/HomeProductC
 import NavBar from './components/navigationBar/NavBar.JSX';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import Loader from './components/loader/Loader.jsx';
 
 const App = () => {
     const [products, setProducts] = useState([]);
@@ -25,13 +26,14 @@ const App = () => {
     return (
         <div>
             {promise === 'pending' ? (
-                <div className=" w-full h-[100vh] flex items-center justify-center flex-col">
-                    {/*<SunspotLoader*/}
-                    {/*  gradientColors={["#F6339A", "#000"]}*/}
-                    {/*  shadowColor={"#3730A3"}*/}
-                    {/*  desktopSize={"100px"}*/}
-                    {/*  mobileSize={"100px"}*/}
-                    {/*/>*/}
+                <Loader />
+            ) : promise === 'rejected' ? (
+                <div>
+                    <NavBar />
+                    <Hero />
+                    <div>
+                        <h1>Error while fetching products</h1>
+                    </div>
                 </div>
             ) : (
                 <div>
