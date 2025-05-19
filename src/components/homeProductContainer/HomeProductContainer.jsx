@@ -7,7 +7,7 @@ const HomeProductContainer = ({ products }) => {
                 products.length > 0 && products.map((product, index) => (
                     <div key={index} className="w-[320px] h-[550px] shadow hover:shadow-2xl  transition duration-200 p-2 rounded-lg">
                         <div className="rounded-lg w-full mb-5 h-[50%]">
-                            <img onClick={() => { navigate(`view/product?id=${product.productId}`) }} className="max-h-full min-h-full cursor-pointer max-w-full min-w-full" src={product.images[0]} alt="image" />
+                            <img onClick={() => { navigate(`view/product/${product.productId}`) }} className="max-h-full min-h-full cursor-pointer max-w-full min-w-full" src={product.images[0]} alt="image" />
                         </div>
                         <div className="flex flex-col gap-3">
                             <p className="font-bold text-2xl">{product.name}</p>
