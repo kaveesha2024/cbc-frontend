@@ -1,6 +1,4 @@
 import { useNavigate } from "react-router";
-import { FaHeart } from "react-icons/fa";
-import toggleWishlist, { isInWishlist } from "../wishList/HandleWishList";
 const HomeProductContainer = ({ products }) => {
     const navigate = useNavigate();
     return (
@@ -18,14 +16,7 @@ const HomeProductContainer = ({ products }) => {
                                 <span className="text-accent text-xl font-bold">LKR {product.price}.00</span>
                                 <span className="line-through font-thin">LKR {product.labelledPrice}.00</span>
                             </div>
-                            <div className="flex justify-between items-center">
-                                {
-                                    isInWishlist(product.productId) ? (
-                                        <button onClick={() => {toggleWishlist(product.productId)}} className="cursor-pointer text-2xl text-accent "><FaHeart /></button>
-                                    ) : (
-                                        <button onClick={() => {toggleWishlist(product.productId)}} className="cursor-pointer text-secondary text-2xl hover:text-accent "><FaHeart /></button>
-                                    )
-                                }
+                            <div className="flex justify-end items-center">
                                 <button className="bg-accent p-2 text-primary rounded-sm cursor-pointer">Add to cart</button>
                             </div>
                         </div>

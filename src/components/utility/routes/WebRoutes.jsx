@@ -13,7 +13,6 @@ axios.interceptors.request.use((config) => {
     }
     return config;
   }, function (error) {
-    // Do something with request error
     return Promise.reject(error);
   });
 const WebRoutes = () => {
