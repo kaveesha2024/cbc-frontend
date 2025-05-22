@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { GrStatusGood } from 'react-icons/gr';
+import { addToCart } from '../../utility/cart/cart.js';
+import toast from 'react-hot-toast';
 
 const ProductOverViewPage = ({ product }) => {
     const [currentPicture, setCurrentPicture] = useState(product.images[0]);
@@ -78,7 +80,10 @@ const ProductOverViewPage = ({ product }) => {
                     )}
                 </p>
                 <div className="flex justify-evenly my-10 items-center gap-2 w-full">
-                    <button className="bg-accent w-[200px] py-3 rounded-sm shadow-2xl active:bg-pink-800 text-xl hover:shadow-2xl font-bold cursor-pointer text-primary">
+                    <button
+                        onClick={() => toast.success(addToCart(product, 1))}
+                        className="bg-accent w-[200px] py-3 rounded-sm shadow-2xl active:bg-pink-800 text-xl hover:shadow-2xl font-bold cursor-pointer text-primary"
+                    >
                         Add to Cart
                     </button>
                     <button className="bg-accent w-[200px] py-3 rounded-sm shadow-2xl active:bg-pink-800 text-xl hover:shadow-2xl font-bold cursor-pointer text-primary">
