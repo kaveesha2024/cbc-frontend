@@ -1,9 +1,9 @@
-import UpdateForm from "./UpdateForm.jsx";
-import {useLocation, useNavigate} from "react-router";
-import {useState} from "react";
-import {imageUpload} from "../../../../../utility/promise/imageUploadPromise.js";
-import axios from "axios";
-import toast from "react-hot-toast";
+import UpdateForm from './UpdateForm.jsx';
+import { useLocation, useNavigate } from 'react-router';
+import { useState } from 'react';
+import { imageUpload } from '../../../../../utility/promise/imageUploadPromise.js';
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const UpdateProduct = () => {
     const navigate = useNavigate();
@@ -11,7 +11,8 @@ const UpdateProduct = () => {
     const [inputDetails, setInputDetails] = useState({
         name: previousDetails.name,
         brand: previousDetails.brand,
-        description: previousDetails.description.join(", "),
+        features: previousDetails.features.join(', '),
+        alterNames: previousDetails.alterNames.join(', '),
         discount: previousDetails.discounts,
         category: previousDetails.category,
         labelledPrice: previousDetails.labelledPrice,
@@ -19,18 +20,17 @@ const UpdateProduct = () => {
         quantity: previousDetails.quantity,
         images: previousDetails.images,
         isAvailable: previousDetails.isAvailable,
-    })
-    const handleInput = event => {
-        const {name, value} = event.target;
+    });
+    console.log(inputDetails.isAvailable);
+    const handleInput = (event) => {
+        const { name, value } = event.target;
         setInputDetails({
             ...inputDetails,
             [name]: value,
-        })
-    }
+        });
+    };
     const handleSubmit = async (files) => {
-        const updateToast = toast.loading("Loading...");
-        inputDetails.isAvailable = inputDetails.isAvailable === "true";
-
+        const updateToast = toast.loading('Loading...');
         let PublicUrls = previousDetails.images;
         if (files.length > 0) {
             const promiseArray = [];
@@ -39,45 +39,51 @@ const UpdateProduct = () => {
             }
             try {
                 PublicUrls = await Promise.all(promiseArray);
-            }catch (err) {
+            } catch (err) {
                 toast.dismiss(updateToast);
-                console.log(err)
+                console.log(err);
             }
         }
         const new_discount = inputDetails.labelledPrice - inputDetails.price;
         const req = {
             name: inputDetails.name,
             brand: inputDetails.brand,
-            description: inputDetails.description,
+            features: inputDetails.features.split(', '),
             category: inputDetails.category,
+            alterNames: inputDetails.alterNames.split(', '),
             labelledPrice: inputDetails.labelledPrice,
             price: inputDetails.price,
             quantity: inputDetails.quantity,
             discounts: new_discount,
             images: PublicUrls,
             isAvailable: inputDetails.isAvailable,
-        }
+        };
         try {
-            const response = await axios.put('/api/products/update', req,{ headers: {
-                "Authorization": `Bearer ${localStorage.getItem('token')}`
+            const response = await axios.put('/api/products/update', req, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
                 },
-                params : {
-                    productId: previousDetails.productId
-                }
+                params: {
+                    productId: previousDetails.productId,
+                },
             });
             if (response.data.status === 200) {
                 toast.dismiss(updateToast);
-                navigate("/dashboard/products");
+                navigate('/dashboard/products');
             }
-        }catch (err) {
+        } catch (err) {
             toast.dismiss(updateToast);
-            console.log(err)
+            console.log(err);
         }
     };
 
     return (
         <div>
-            <UpdateForm previousDetails={previousDetails} handleInput={handleInput} handleSubmit={handleSubmit} />
+            <UpdateForm
+                previousDetails={previousDetails}
+                handleInput={handleInput}
+                handleSubmit={handleSubmit}
+            />
         </div>
     );
 };

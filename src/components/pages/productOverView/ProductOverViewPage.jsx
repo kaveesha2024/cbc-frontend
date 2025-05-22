@@ -1,66 +1,87 @@
+import { useState } from 'react';
 import { GrStatusGood } from 'react-icons/gr';
 
 const ProductOverViewPage = ({ product }) => {
+    const [currentPicture, setCurrentPicture] = useState(product.images[0]);
+    console.log(product.features);
     return (
-        <div className="w-full px-4 py-5 sm:px-10 md:px-20 md:py-10">
-            <div className=" w-full flex flex-col md:flex-row h-full rounded-lg overflow-hidden">
-                <div className=" flex justify-center items-center w-full md:w-1/2 h-64 md:h-auto">
+        <div className="flex w-full h-[88vh] px-20">
+            <div className="w-[50%] h-full p-7">
+                <div className="w-full shadow-2xl bg-white h-[80%] rounded-t-lg ">
                     <img
-                        className="w-[80%] md:min-w-[70%] md:max-w-[70%] md:min-h-[70%] md:max-h-[70%] rounded-xl object-contain"
-                        src={product.images[0]}
-                        alt="no image found"
+                        className="w-full rounded-t-lg h-full object-cover"
+                        src={currentPicture}
+                        alt="image"
                     />
                 </div>
-                <div className="p-5 md:p-10 w-full md:w-1/2 flex items-center">
-                    <div className="w-full bg-aber-100 flex flex-col justify-center items-start">
-                        <div>
-                            <p className="text-2xl md:text-5xl font-bold mb-2 break-words">
-                                {product.name}
-                            </p>
-                            <p className="text-black/20 mb-6 text-xs md:text-base">
-                                <span>Product ID: </span>
-                                {product.productId}
-                            </p>
-                            <p>
-                                <span className="text-xl md:text-4xl font-bold">
-                                    LKR {product.price}
-                                </span>{' '}
-                                <span className="text-black/50 line-through text-base md:text-xl">
-                                    LKR {product.labelledPrice}
-                                </span>
-                            </p>
+                <div className="w-full h-[25%] border-transparent shadow-2xl bg-white flex justify-center items-center overflow-x-auto ">
+                    {product.images.map((image, index) => (
+                        <div key={index} className=" rounded-md object-cover">
+                            <img
+                                onMouseEnter={() => {
+                                    setCurrentPicture(image);
+                                }}
+                                key={index}
+                                className={
+                                    'w-[150px] shadow-2xl cursor-pointer hover:scale-105 transition duration-300 hover:shadow-2xl hover:outline-4 outline-accent roun ml-2 h-[130px] object-cover' +
+                                    (image === currentPicture && ' outline-4 outline-accent')
+                                }
+                                src={image}
+                                alt="no image found!"
+                            />
                         </div>
-                        <div className="my-3">
-                            <p className="font-semibold mb-3">Key Features</p>
-                            <ul className="space-y-2">
-                                {product.description.map((feature, index) => (
-                                    <li
-                                        key={index}
-                                        className="flex items-center text-gray-600 text-sm md:text-base"
-                                    >
-                                        <span className="w-1.5 h-1.5 bg-[#F6339A] rounded-full mr-2"></span>
-                                        {feature}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                        <div className="text-xs md:text-sm font-semibold flex flex-col gap-2">
-                            <p className="flex items-center gap-1">
-                                availability:
-                                <span className="text-green-500 flex items-center gap-1">
-                                    <GrStatusGood className="text-base md:text-lg" />
-                                    In stocks({product.quantity} units)
-                                </span>
-                            </p>
-                        </div>
-                        <button className="bg-accent w-full py-2 rounded-sm text-primary font-bold mt-6 md:mt-10 transition duration-300 hover:shadow-2xl cursor-pointer">
-                            Add to Cart
-                        </button>
-                        <p className="text-black/50 text-xs md:text-sm mt-5">
-                            Category: Photography
-                        </p>
-                    </div>
+                    ))}
                 </div>
+            </div>
+            <div className=" w-[50%] h-full flex justify-center gap-3 flex-col items-start px-2">
+                <div>
+                    <h1 className="font-bold text-6xl">{product.name}</h1>
+                    <p className="text-black/20 text-sm font-serif">
+                        Product Id: <span className="font-sans">{product.productId}</span>
+                    </p>
+                </div>
+                <div>
+                    {product.price <= product.labelledPrice ? (
+                        <div>
+                            <span className="text-4xl text-accent font-bold">
+                                LKR {product.price.toFixed(2)}
+                            </span>
+                            <span className=" ml-2 font-semibold text-xl line-through">
+                                LKR {product.labelledPrice.toFixed(2)}
+                            </span>
+                        </div>
+                    ) : (
+                        <span className="text-4xl text-accent font-bold">
+                            LKR {product.price.toFixed(2)}
+                        </span>
+                    )}
+                </div>
+                <div className="mb-2">
+                    <p className="text-xl font-semibold italic">Features</p>
+                    <ul className="list-disc list-inside">
+                        {product.features.length > 0 &&
+                            product.features.map((feature, index) => (
+                                <li className="ml-2  text-black/60" key={index}>
+                                    {feature}
+                                </li>
+                            ))}
+                    </ul>
+                </div>
+                <p className="font-bold text-lg">
+                    {product.isAvailable ? (
+                        <span className="text-green-500 flex justify-center items-center gap-2">
+                            <GrStatusGood className="text-xl" />
+                            In Stock
+                        </span>
+                    ) : (
+                        <span className="text-red-500">Out of Stock</span>
+                    )}
+                </p>
+                <div>
+                    <button>Add to Cart</button>
+                    <button>Buy Now</button>
+                </div>
+                <p>Category</p>
             </div>
         </div>
     );

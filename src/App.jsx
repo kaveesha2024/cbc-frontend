@@ -29,7 +29,7 @@ const App = () => {
                 <Loader />
             ) : promise === 'rejected' ? (
                 <div>
-                    <NavBar />
+                    {/*<NavBar />*/}
                     <Hero />
                     <div>
                         <h1>Error while fetching products</h1>
@@ -37,7 +37,7 @@ const App = () => {
                 </div>
             ) : (
                 <div>
-                    <NavBar />
+                    {/*<NavBar />*/}
                     <Hero />
                     <HomeProductContainer products={products} />
                 </div>

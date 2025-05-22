@@ -39,10 +39,8 @@ const ProductOverView = () => {
             toast.error('Please Try Again');
         }
     };
-    console.log(product);
     return (
         <div>
-            <NavBar />
             {promise === 'fulfilled' ? (
                 <ProductOverViewPage product={product} />
             ) : (

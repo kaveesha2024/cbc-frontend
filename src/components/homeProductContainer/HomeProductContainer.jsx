@@ -25,14 +25,14 @@ const HomeProductContainer = ({ products }) => {
                                 {product.name}
                             </p>
                             <p className="text-start font-thin line-clamp-3 h-14 sm:h-[70px] text-sm sm:text-base">
-                                {product.description[0]}
+                                {product.features[0]}
                             </p>
                             <div className="flex flex-col">
                                 <span className="text-accent text-base sm:text-xl font-bold">
-                                    LKR {product.price}
+                                    LKR {product.price.toFixed(2)}
                                 </span>
                                 <span className="line-through font-thin text-xs sm:text-base">
-                                    LKR {product.labelledPrice}
+                                    LKR {product.labelledPrice.toFixed(2)}
                                 </span>
                             </div>
                             <div className="flex justify-end items-center mt-auto">
