@@ -77,11 +77,15 @@ const ProductOverViewPage = ({ product }) => {
                         <span className="text-red-500">Out of Stock</span>
                     )}
                 </p>
-                <div>
-                    <button>Add to Cart</button>
-                    <button>Buy Now</button>
+                <div className="flex justify-evenly my-10 items-center gap-2 w-full">
+                    <button className="bg-accent w-[200px] py-3 rounded-sm shadow-2xl active:bg-pink-800 text-xl hover:shadow-2xl font-bold cursor-pointer text-primary">
+                        Add to Cart
+                    </button>
+                    <button className="bg-accent w-[200px] py-3 rounded-sm shadow-2xl active:bg-pink-800 text-xl hover:shadow-2xl font-bold cursor-pointer text-primary">
+                        Buy Now
+                    </button>
                 </div>
-                <p>Category</p>
+                <p className="text-black/70 text-sm font-serif">Category: {product.category}</p>
             </div>
         </div>
     );
